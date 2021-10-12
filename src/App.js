@@ -10,41 +10,43 @@ function App() {
   const [showAddTask,setShowAddTask]=useState(false)
   const [tasks,setTasks] = useState([ ])
 
+  //EFFECTS FOR MANAGING CERTAIN EVENTS WHICH ON THIS CASE IT MANAGES THE LOAD EFFECT WHERE ALL THE TASKS ARE GOTTEN AND APPENDED APPROPRIATELY.
   useEffect(() => {
     const getTasks = async () => {
 
       const tasksFromServer = await fetchTasks();
-      setTasks(tasksFromServer)
+      setTasks(tasksFromServer)//Adds the data from the server into our state(Container for our component properties).
     }
 
-    getTasks()
+    getTasks()//Calling the function created because the default function can kinda not serve as an aync function at the same time. 
 
   },[])
-// FETCH TASKS
+// FETCH TASKS(FOR FETCHING ALL THE TASKS)
 
 const fetchTasks = async () =>{
       const res = await fetch('http://localhost:5000/tasks')
       const data = await res.json();
       return data;
     }
-//FETCH TASK
+//FETCH TASK(FOR FETCHING A PARTICULAR TASK)
     const fetchTask = async (id) =>{
       const res = await fetch(`http://localhost:5000/tasks/${id}`)
       const data = await res.json();
       return data;
     }
 
-  //ADD TASK
+  //ADD TASK(ADDING TASKS TO OUR LIST OF TASKS.)
   const addTask = async (task) => {
   const res = await fetch ('http://localhost:5000/tasks',{
     method:'POST',
-    //Headers added since we are sending data.
-    headers: {
+    //Headers added since we are sending/posting data.
+    headers: {//Headers added mainly to specify our content type.
       'Content-type':'application/json',
-    },
+    },//Body of the data that we are sending.
     body: JSON.stringify(task)
   }) 
 
+  //This is just the new task that is added.
   const data = await res.json()
 
   setTasks([...tasks,data])
@@ -58,10 +60,10 @@ const fetchTasks = async () =>{
   //DELETE TASK FUNCTION 
   const deleteTask = async(id) => { 
     await fetch(`http://localhost:5000/tasks/${id}`,{
-      method:'DELETE',
-    })
+      method:'DELETE', 
+    })//Removes the object from the server
 
-    setTasks(tasks.filter((task)=> task.id!==id
+    setTasks(tasks.filter((task)=> task.id!==id//Removes the object locally
     ))
   }
 
@@ -84,7 +86,7 @@ const fetchTasks = async () =>{
   const data = await res.json()
       setTasks(
         tasks.map((task)=>
-        task.id === id ? {...task,reminder:!data.reminder}:task
+        task.id === id ? {...task,reminder: data.reminder}:task
         )
       )
     }

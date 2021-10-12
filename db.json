@@ -1,22 +1,22 @@
 {
   "tasks": [
     {
-      "id": 2,
-      "text": "Meeting at School",
-      "day": "Feb 6th at 1:30pm",
-      "reminder": true
-    },
-    {
-      "id": 3,
-      "text": "Parents Meeting",
-      "day": "Feb 10th at 7:30am",
-      "reminder": true
-    },
-    {
-      "text": "University Students Orientation",
+      "text": "University Lecturers Orientation",
       "day": "October 8th at 2:30pm",
       "reminder": true,
-      "id": 4
+      "id": 5
+    },
+    {
+      "text": "University Staff Orientation",
+      "day": "October 8th at 2:30pm",
+      "reminder": true,
+      "id": 6
+    },
+    {
+      "text": "Planar Mechanics",
+      "day": "8:00 am Wednesday",
+      "reminder": true,
+      "id": 7
     }
   ]
 }
