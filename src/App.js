@@ -26,7 +26,7 @@ function App() {
 const fetchTasks = async () =>{
       const res = await fetch('http://localhost:5000/tasks')
       const data = await res.json();
-      return data;
+      return data ;
     }
 //FETCH TASK(FOR FETCHING A PARTICULAR TASK)
     const fetchTask = async (id) =>{
